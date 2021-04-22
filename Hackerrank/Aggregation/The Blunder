@@ -1,0 +1,4 @@
+SELECT CEIL(AVG(Salary) - AVG(REPLACE(Salary,'0',''))) FROM EMPLOYEES;
+
+/* CEIL returns the smallest integer value that is bigger than or equal to a number */ 
+-- Question link: https://www.hackerrank.com/challenges/the-blunder/problem

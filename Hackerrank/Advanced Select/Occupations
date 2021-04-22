@@ -1,0 +1,13 @@
+-- Pivot rows to column
+
+select doctor, professor, singer, actor from 
+--add row number over divided rows into partitions(columns doctor, professor, singer, actor) by occupation
+
+(select row_number() over(partition by occupation order by name) row_num, name, occupation from occupations)
+pivot(--transpose rows into columns from Occupaiton (columns doctor, professor, singer, actor)
+    min(name)
+    for occupation in ('Doctor' doctor, 'Professor' professor, 'Singer' singer, 'Actor' actor)
+) order by row_num;
+
+/* Row_number 功用在於編號，而Partition by 則是用於結果總結分組 */
+-- Question link: https://www.hackerrank.com/challenges/occupations/problem

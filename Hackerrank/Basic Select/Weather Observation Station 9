@@ -1,0 +1,7 @@
+WHERE CITY REGEXP '^[^AEIOU]'
+
+/* [^] Find any character that is not in the bracket 
+Therefore, this aims to find out the not start with the vowels
+*/
+
+-- Question link: https://www.hackerrank.com/challenges/weather-observation-station-9/problem

@@ -1,0 +1,12 @@
+-- This is the example of selecting values from different tables with same column among
+
+select company_code, founder, 
+(select count(distinct lead_manager_code) from Lead_Manager where company_code = c.company_code),
+(select count(distinct senior_manager_code) from Senior_Manager where company_code = c.company_code),
+(select count(distinct manager_code) from Manager where company_code = c.company_code),
+(select count(distinct employee_code) from Employee where company_code = c.company_code)
+from Company c 
+order by company_code;
+
+-- Since every table has the same column name called company_code, so use the same condition here, 
+the question is here: https://www.hackerrank.com/challenges/the-company/problem

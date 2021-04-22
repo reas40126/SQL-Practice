@@ -1,0 +1,8 @@
+SELECT DISTINCT CITY FROM STATION WHERE CITY REGEXP '^[AEIOU].*[AEIOU]$' ORDER BY CITY 
+
+/* 
+^[] Represents the previous any of the letters in the bracket 
+.* Represents any numbers or letters 
+[]$ Represents any letters at the last in the bracket */ 
+
+-- Link to the question: https://www.hackerrank.com/challenges/weather-observation-station-8/problem

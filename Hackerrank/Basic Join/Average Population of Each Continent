@@ -1,0 +1,7 @@
+SELECT COUNTRY.CONTINENT, FLOOR(AVG(CITY.POPULATION))
+FROM CITY
+INNER JOIN COUNTRY ON CITY.COUNTRYCODE = COUNTRY.Code
+GROUP BY COUNTRY.CONTINENT;
+
+/* Floor returns the largest integer value that is smaller than or equal to a number. */
+-- Question link: https://www.hackerrank.com/challenges/average-population-of-each-continent/problem

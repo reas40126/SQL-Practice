@@ -1,0 +1,11 @@
+SELECT N,
+CASE
+    WHEN P IS null THEN 'Root'
+    WHEN N IN (SELECT P FROM BST) THEN 'Inner' -- node is the parent 
+    Else 'Leaf'
+END
+FROM BST
+ORDER BY N;
+
+/* Notice the pattern of the parent element in binary tree nodes */
+-- Question link: https://www.hackerrank.com/challenges/binary-search-tree-1/problem

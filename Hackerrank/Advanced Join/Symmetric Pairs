@@ -1,0 +1,23 @@
+/* Count over 2 paris with the same values as well as those pairs with Y larger than X */
+
+-- Solution 1
+
+SELECT f1.X, f1.Y FROM Functions f1
+WHERE f1.X = f1.Y AND 
+(SELECT COUNT(*) FROM Functions WHERE X = f1.X and Y = f1.Y) >1
+UNION
+SELECT f1.X, f1.Y FROM Functions AS f1, Functions AS f2
+WHERE f1.X <> f1.Y and f1.X = f2.Y and f1.Y = f2.X and f1.X < f2.X
+ORDER BY X;
+
+-- Solution 2
+
+SELECT f1.x, f1.y FROM Functions f1
+INNER JOIN Functions f2 ON f1.x = f2.y and f1.y = f2.x
+GROUP BY f1.y, f1.x
+HAVING COUNT(f1.x) > 1 or f1.x < f1.y 
+ORDER BY f1.x
+
+/* HAVING is used because the WHERE keyword cannot be used with aggregate functions.*/
+
+-- Question link: https://www.hackerrank.com/challenges/symmetric-pairs/problem

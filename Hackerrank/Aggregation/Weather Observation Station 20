@@ -1,0 +1,14 @@
+/* Create the rowindex for LAT_N value to order the value
+Then found the value within the medium of the row from rowindex 
+*/
+
+SET @rowindex := -1;
+SELECT ROUND(AVG(N.LAT_N),4)
+
+FROM (SELECT @rowindex := @rowindex + 1 AS rowindex,
+        STATION.LAT_N AS LAT_N
+      FROM STATION
+      ORDER BY STATION.LAT_N) AS N
+WHERE N.rowindex IN (FLOOR(@rowindex/2), CEIL(@rowindex/2));
+
+Question link: https://www.hackerrank.com/challenges/weather-observation-station-20/problem
